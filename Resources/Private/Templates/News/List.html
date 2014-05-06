@@ -1,0 +1,110 @@
+{namespace n=Tx_News_ViewHelpers}
+<f:layout name="General" />
+<!--
+=====================
+	Templates/News/List.html
+<f:debug>{news}</f:debug>
+-->
+
+<f:section name="content">
+<f:if condition="{news}">
+	<f:then>
+	<f:if condition="{settings.templateLayout} == 1">
+	<f:then>
+	<div class="news-list-view1">
+		<f:if condition="{settings.hidePagination}">
+		<f:then>
+			<f:for each="{news}" as="newsItem">			
+			<f:render partial="List/Layout1" arguments="{newsItem: newsItem, settings:settings}" />
+			</f:for>
+		</f:then>
+		<f:else>
+			<n:widget.paginate objects="{news}" as="paginatedNews" configuration="{settings.list.paginate}">
+			<f:for each="{paginatedNews}" as="newsItem">
+			
+				<f:render partial="List/Layout1" arguments="{newsItem: newsItem, settings:settings}" />
+			</f:for>
+			</n:widget.paginate>
+		</f:else>
+		</f:if>
+	</div>
+	</f:then>
+	</f:if>
+	
+	
+	<f:if condition="{settings.templateLayout} == 2">
+	<f:then>
+	<div class="news-list-view2">
+		<f:if condition="{settings.hidePagination}">
+		<f:then>
+			<f:for each="{news}" as="newsItem">
+				
+			<f:render partial="List/Layout2" arguments="{newsItem: newsItem, settings:settings}" />
+			</f:for>
+		</f:then>
+		<f:else>
+			<n:widget.paginate objects="{news}" as="paginatedNews" configuration="{settings.list.paginate}">
+			<f:for each="{paginatedNews}" as="newsItem">
+			
+				<f:render partial="List/Layout2" arguments="{newsItem: newsItem, settings:settings}" />
+			</f:for>
+			</n:widget.paginate>
+		</f:else>
+		</f:if>
+	</div>
+	</f:then>
+	</f:if>
+	
+	 <f:if condition="{settings.templateLayout} == 3">
+	<f:then>
+	<div class="news-list-view2">
+		<f:if condition="{settings.hidePagination}">
+		<f:then>
+			<f:for each="{news}" as="newsItem">
+			<f:render partial="List/Layout3" arguments="{newsItem: newsItem, settings:settings}" />
+			</f:for>
+		</f:then>
+		<f:else>
+			<n:widget.paginate objects="{news}" as="paginatedNews" configuration="{settings.list.paginate}">
+			<f:for each="{paginatedNews}" as="newsItem">
+			
+				<f:render partial="List/Layout3" arguments="{newsItem: newsItem, settings:settings}" />
+			</f:for>
+			</n:widget.paginate>
+		</f:else>
+		</f:if>
+	</div>
+	</f:then>
+	</f:if>
+	 
+	<!-- TEMPLATE FOR MAPS  --------------------------------------------------------------------------  -->
+	 <!-- Page ts_config  -->
+	 <!-- 
+	 tx_news.templateLayouts {
+		1 = Liste mit Bild
+		2 = Liste ohne Bild
+		3 = Tourenbedingungen
+		4 = Maps
+		11 = Singleansicht Standard
+		21 = Singleansicht 2
+		31 = Singleansicht Tourenbedingungen
+	}
+	 
+	 
+	  -->
+	 <f:if condition="{settings.templateLayout} == 4">
+	<f:then>
+		<f:render partial="List/Map" arguments="{news:news, settings:settings}" />
+	</f:then> 
+	 </f:if>
+	<!-- Ende Maps ------------------------------------------------------------------------------------ -->
+	
+	
+	</f:then>
+	<f:else>
+	<div class="no-news-found">
+		<f:translate key="list_nonewsfound" />
+	</div>
+	</f:else>
+</f:if>
+</f:section>

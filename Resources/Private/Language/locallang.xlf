@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-02-16T16:23:17Z" product-name="bertigolfnewsgeo">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_bertigolfnewsgeo_domain_model_news">
+				<source>News</source>
+			</trans-unit>
+			<trans-unit id="tx_bertigolfnewsgeo_domain_model_news.lon">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_bertigolfnewsgeo_domain_model_news.lat">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_bertigolfnewsgeo_domain_model_news.track">
+				<source>Track der Route</source>
+			</trans-unit>
+			
+		</body>
+	</file>
+</xliff>

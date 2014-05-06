@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-02-16T16:23:17Z" product-name="bertigolfnewsgeo">
+		<header/>
+		<body>
+
+			<trans-unit id="lon.description">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="lat.description">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="track.description">
+				<source>Track der Route</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

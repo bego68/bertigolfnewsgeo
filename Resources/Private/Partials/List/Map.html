@@ -1,0 +1,9 @@
+<f:if condition="{news}">
+	<f:then>
+		<f:render partial="List/Maps/MapJs" arguments="{news: news,settings:settings}" />
+		<div id="map_canvas" ></div>
+	</f:then>
+	<f:else>
+		No News Found! Check your settings!
+	</f:else>
+</f:if> 
