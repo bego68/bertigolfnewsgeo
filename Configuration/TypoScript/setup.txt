@@ -16,7 +16,7 @@ plugin.tx_bertigolfnewsgeo {
 plugin.tx_news {
 	 persistence {
 			 classes {
-					Tx_News_Domain_Model_News {
+					GeorgRinger\News\Domain\Model\News {
 						subclasses {
 								# hier wichtig: index 0 überschreiben für die 
 								# normale News-Ansicht
@@ -51,12 +51,12 @@ plugin.tx_news {
 			 }
 	 }
 }
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_NewsExternal.mapping.recordType = 6
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_NewsDefault.mapping.recordType = 4
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_NewsInternal.mapping.recordType = 5
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_News.subclasses.0 = bertigolf\Bertigolfnewsgeo\Domain\Model\News
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_News.subclasses.2 = bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_News.subclasses.1 = bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsExternal.mapping.recordType = 6
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsDefault.mapping.recordType = 4
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsInternal.mapping.recordType = 5
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.0 = bertigolf\Bertigolfnewsgeo\Domain\Model\News
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.2 = bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.1 = bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
 
 
 plugin.tx_bertigolfnewsgeo._CSS_DEFAULT_STYLE (
@@ -87,7 +87,7 @@ plugin.tx_bertigolfnewsgeo._CSS_DEFAULT_STYLE (
 
 
 config.tx_extbase.persistence.classes {
-	Tx_News_Domain_Model_News {
+	GeorgRinger\News\Domain\Model\News {
 		subclasses {
 				# hier wichtig: index 0 überschreiben für die 
 				# normale News-Ansicht
