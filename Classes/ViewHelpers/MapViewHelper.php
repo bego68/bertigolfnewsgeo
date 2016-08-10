@@ -49,7 +49,7 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 	public function render( $uid=0,$titel='',$untertitel='',$info='',$lat=0, $lng=0,$imageId=0) {
 	  	/** @var array $map */
 		$map=array();
-		if($lat > 0 and $lng > 0){
+		if($lat <> 0 and $lng <> 0){
 			$map = array(
 				'uid' => $uid,
 				'titel' => $titel,
