@@ -34,22 +34,35 @@ use bertigolf\Bertigolfnewsgeo\Domain\Model\News;
  *
  */
  class ImageIdViewHelper extends AbstractViewHelper {
-	
+    
+    
+    /**
+     * initialisiert Argumente
+     *
+    */    
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+        //$this->registerUniversalTagAttributes();
+        $this->registerArgument('news', News::class, 'news item', true);
+        $this->registerArgument('settings', 'array', 'Settings', false, []);
+    }	
 	/**
 	 * gibt den  zugehörigge Katalogtext zurück
 	 *
-	 * @param object $news
-	 * @param array $settings
 	 * 
 	 * @return integer $imageId;
 	 */
-	public function render( $news=NULL,$settings=array()) {
+	public function render() {
 	  	/** @var int */
 		$imageId=0;
+		/** @var News $newsItem */
+                $newsItem = $this->arguments['news'];
+		$settings = $this->arguments['settings'];
 		foreach ( $settings['image'] as $key => $image){
 			/** @var intger */
 			$pids = explode(',', $image['pid'] );;
-			if (in_array( $news->getPid() , $pids)){
+			if (in_array( $newsItem->getPid() , $pids)){
 				$imageId=$key;
 			}else{
 				//todo check categories		

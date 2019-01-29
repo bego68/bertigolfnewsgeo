@@ -3,7 +3,7 @@ namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Berti Golf <info@berti-golf.de>, berti-golf.de
+ *  (c) 2014-2019 Berti Golf <info@berti-golf.de>, berti-golf.de
  *  
  *  All rights reserved
  *
@@ -42,9 +42,10 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
     public function initializeArguments()
     {
         parent::initializeArguments();
+
         $this->registerArgument('uid', 'integer', 'uid', false,0);
-        $this->registerArgument('title', 'string', 'title', false, '');
-        $this->registerArgument('untertitle', 'string', 'untertitle', false, '');
+        $this->registerArgument('titel', 'string', 'titel', false, '');
+        $this->registerArgument('untertitel', 'string', 'untertitel', false, '');
         $this->registerArgument('info', 'string', 'info', false, '');
         $this->registerArgument('lat', 'float', 'lat', false,0);
         $this->registerArgument('lng', 'float', 'lng', false,0);
@@ -58,6 +59,7 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 	public function render() {
 	  	/** @var array $map */
 		$map=array();
+	
 		if($this->arguments['lat'] <> 0 and $this->arguments['lng']<> 0){
 			$map = array(
 				'uid' => $this->arguments['uid'],
@@ -70,7 +72,6 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 			);
 			
 		}
-		
 		
 		return json_encode( $map );
 		
