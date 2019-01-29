@@ -45,3 +45,27 @@ plugin.tx_news{
 		}
 	}
 }
+plugin.tx_news {
+  view {
+    partialRootPaths >
+    partialRootPaths {
+      # Pfad mit allen unveränderten Templates der Erweiterung:
+      100 = EXT:news/Resources/Private/Partials/
+      # Pfad nur mit angepassten Templates:
+      200 = EXT:bertigolfnewsgeo/Resources/Private/Partials/
+      300 = fileadmin/template/ext/news/Partials/
+    }
+    templateRootPaths >
+    templateRootPaths {
+      100 = EXT:news/Resources/Private/Templates/
+      200 = EXT:bertigolfnewsgeo/Resources/Private/Templates/
+      300 = fileadmin/template/ext/news/Templates/
+    }
+    layoutRootPaths>
+    layoutRootPaths{
+      100 = EXT:news/Resources/Private/Layouts/
+      200 = EXT:bertigolfnewsgeo/Resources/Private/Layouts/
+      300 = fileadmin/template/ext/news/Layouts/
+    }
+  }
+}
