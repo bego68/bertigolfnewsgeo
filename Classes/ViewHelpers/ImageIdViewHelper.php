@@ -1,5 +1,5 @@
 <?php        
-namespace bertigolf\Bertigolfnewsgeo\ViewHelpers;
+namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +25,7 @@ namespace bertigolf\Bertigolfnewsgeo\ViewHelpers;
  ***************************************************************/
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use bertigolf\Bertigolfnewsgeo\Domain\Model\News;
-use Tx_News_Domain_Model_News;
+//use Tx_News_Domain_Model_News;
 /**
  *
  *
@@ -38,12 +38,12 @@ use Tx_News_Domain_Model_News;
 	/**
 	 * gibt den  zugehörigge Katalogtext zurück
 	 *
-	 * @param \Tx_News_Domain_Model_NewsDefault $news
+	 * @param object $news
 	 * @param array $settings
 	 * 
 	 * @return integer $imageId;
 	 */
-	public function render( Tx_News_Domain_Model_News $news=NULL,$settings=array()) {
+	public function render( $news=NULL,$settings=array()) {
 	  	/** @var int */
 		$imageId=0;
 		foreach ( $settings['image'] as $key => $image){

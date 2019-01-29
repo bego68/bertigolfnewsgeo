@@ -1,11 +1,11 @@
 <?php
-namespace bertigolf\Bertigolfnewsgeo\Domain\Model;
+namespace Bertigolf\Bertigolfnewsgeo\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
  *
  *  (c) 2014 Berti Golf <info@berti-golf.de>, berti-golf.de
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -32,7 +32,7 @@ namespace bertigolf\Bertigolfnewsgeo\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class NewsExternal extends \Tx_News_Domain_Model_NewsExternal{
+class NewsExternal extends \GeorgRinger\News\Domain\Model\NewsExternal{
 
 	/**
 	 * Longitude

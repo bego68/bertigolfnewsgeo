@@ -14,56 +14,56 @@ plugin.tx_bertigolfnewsgeo {
 }
 
 plugin.tx_news {
-        persistence {
-                classes {
-                        Tx_News_Domain_Model_News {
-                                subclasses {
-                                        # hier wichtig: index 0 überschreiben für die 
-                                        # normale News-Ansicht
-                                        # 0 == Typ-Auswahl an News-Datensatz
-                                        0 = bertigolf\Bertigolfnewsgeo\Domain\Model\News
-                                        1 = bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
-                                        2 = bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
-                                }
-                        }
-                        bertigolf\Bertigolfnewsgeo\Domain\Model\News{
-                                mapping {
-                                        recordType = 0
-                                        tableName = tx_news_domain_model_news
-                                }
-                                
-                        }
-                        bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal{
-                                mapping {
-                                        recordType = 1
-                                        tableName = tx_news_domain_model_news
-                                }
-                                
-                        }
-                        bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal{
-                                mapping {
-                                        recordType = 2
-                                        tableName = tx_news_domain_model_news
-                                }
-                                
-                        }
-                        
-                }
-        }
+	 persistence {
+			 classes {
+					GeorgRinger\News\Domain\Model\News {
+						subclasses {
+								# hier wichtig: index 0 überschreiben für die 
+								# normale News-Ansicht
+								# 0 == Typ-Auswahl an News-Datensatz
+								0 = Bertigolf\Bertigolfnewsgeo\Domain\Model\News
+								2 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
+								1 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
+						}
+					}
+					Bertigolf\Bertigolfnewsgeo\Domain\Model\News{
+						mapping {
+								recordType = 0
+								tableName = tx_news_domain_model_news
+						}
+						
+					}
+					Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal{
+						mapping {
+								recordType = 2
+								tableName = tx_news_domain_model_news
+						}
+						
+					}
+					Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal{
+						mapping {
+								recordType = 1
+								tableName = tx_news_domain_model_news
+						}
+						
+					}
+					
+			 }
+	 }
 }
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_NewsExternal.mapping.recordType = 6
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_NewsDefault.mapping.recordType = 4
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_NewsInternal.mapping.recordType = 5
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_News.subclasses.0 = bertigolf\Bertigolfnewsgeo\Domain\Model\News
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_News.subclasses.1 = bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
-plugin.tx_news.persistence.classes.Tx_News_Domain_Model_News.subclasses.2 = bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsExternal.mapping.recordType = 6
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsDefault.mapping.recordType = 4
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsInternal.mapping.recordType = 5
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.0 = Bertigolf\Bertigolfnewsgeo\Domain\Model\News
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.2 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
+plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.1 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
 
 
 plugin.tx_bertigolfnewsgeo._CSS_DEFAULT_STYLE (
 
 	#map_canvas{
-	  width: 600px;
-	  height: 600px;
+	width: 100%;
+	height: 400px;
 	}
 	#content .gm-style-iw p{
 	 padding : 0; 
@@ -71,19 +71,52 @@ plugin.tx_bertigolfnewsgeo._CSS_DEFAULT_STYLE (
 	}
 	
 	#content .gm-style-iw p.mapDatum{
-	   font-size: 0.8em; 
+	 font-size: 0.8em; 
 	}
 	
 	#content .gm-style-iw p.mapLink a{
-	   font-size: 1.2em; 
+	 font-size: 1.2em; 
 	}
 	
 	#content .gm-style-iw{
-	  min-width: 300px;
-	  min-height: 100px;
+	min-width: 300px;
+	min-height: 100px;
 	}
 
 )
 
-  
 
+config.tx_extbase.persistence.classes {
+	GeorgRinger\News\Domain\Model\News {
+		subclasses {
+				# hier wichtig: index 0 überschreiben für die 
+				# normale News-Ansicht
+				# 0 == Typ-Auswahl an News-Datensatz
+				0 = Bertigolf\Bertigolfnewsgeo\Domain\Model\News
+				2 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
+				1 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
+		}
+	}
+	Bertigolf\Bertigolfnewsgeo\Domain\Model\News{
+		mapping {
+				recordType = 0
+				tableName = tx_news_domain_model_news
+		}
+		
+	}
+	Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal{
+		mapping {
+				recordType = 2
+				tableName = tx_news_domain_model_news
+		}
+		
+	}
+	Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal{
+		mapping {
+			recordType = 1
+			tableName = tx_news_domain_model_news
+		}
+
+	}
+
+}

@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'bertigolf.' . $_EXTKEY,
+	'bertigolfnewsgeo',
 	'Newsgeokoords',
 	array(
 		'News' => 'list,detail,dateMenu,searchForm,searchResult',

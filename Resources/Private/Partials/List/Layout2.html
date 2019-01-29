@@ -1,0 +1,19 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+<!--
+  =====================
+    Partials/List/Layout2.html - Liste ohne Bild
+-->
+  <div class="news-latest-item">
+    <h2>
+      <n:link newsItem="{newsItem}" settings="{settings}">
+ <f:for each="{newsItem.categories}" as="category" iteration="categoryIteration">
+   <f:if condition="{categoryIteration.isFirst }" >
+     <f:for each="{category.images}" as="image" iteration="imageIteration">
+       <f:image src="{image.originalResource.publicUrl}" width="20" />
+     </f:for> 
+   </f:if>  
+ </f:for>
+        {newsItem.title}
+      </n:link>
+    </h2>
+  </div>
