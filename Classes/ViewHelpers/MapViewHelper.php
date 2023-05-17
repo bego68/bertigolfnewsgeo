@@ -23,7 +23,7 @@ namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3FLUID\FLUID\CORE\VIEWHELPER\AbstractConditionViewHelper AbstractViewHelper;
 /**
  *
  *
