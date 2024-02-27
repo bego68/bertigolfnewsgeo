@@ -1,5 +1,5 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
 	die ('Access denied.');
 }
 
@@ -32,12 +32,12 @@ $tmp_bertigolfnewsgeo_columns = array(
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_news_domain_model_news',$tmp_bertigolfnewsgeo_columns,1);
 
-$TCA['tx_news_domain_model_news']['columns'][$TCA['tx_news_domain_model_news']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:bertigolfnewsgeo/Resources/Private/Language');
+$GLOBALS['TCA']['tx_news_domain_model_news']['columns'][$GLOBALS['TCA']['tx_news_domain_model_news']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:bertigolfnewsgeo/Resources/Private/Language');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tx_news_domain_model_news","lon;;;;1-1-1");
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tx_news_domain_model_news","lat;;;;1-1-1");
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tx_news_domain_model_news","track;;;;1-1-1");
 
-$TCA['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] = $TCA['tx_news_domain_model_news']['types']['1']['showitem'];
-$TCA['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] .= ',--div--;LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolf';
-$TCA['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] .= 'lon, lat, track';
+$GLOBALS['TCA']['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] = $GLOBALS['TCA']['tx_news_domain_model_news']['types']['1']['showitem'];
+$GLOBALS['TCA']['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] .= ',--div--;LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolf';
+$GLOBALS['TCA']['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] .= 'lon, lat, track';
