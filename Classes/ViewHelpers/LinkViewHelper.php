@@ -16,7 +16,7 @@ namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
  */
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
-
+use GeorgRinger\News\ViewHelpers\LinkViewHelper as NewsLinkViewHelper;
 /**
  * ViewHelper to render links from news records to detail view or page
  *
@@ -48,6 +48,6 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
  * </output>
  *
  */
-class LinkViewHelper extends \GeorgRinger\News\ViewHelpers\LinkViewHelper {
+class LinkViewHelper extends NewsLinkViewHelper {
 }
 	

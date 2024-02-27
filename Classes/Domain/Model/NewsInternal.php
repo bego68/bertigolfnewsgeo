@@ -24,7 +24,7 @@ namespace Bertigolf\Bertigolfnewsgeo\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use GeorgRinger\News\Domain\Model\NewsInternal as GrNewsInternal;
 /**
  *
  *
@@ -32,7 +32,7 @@ namespace Bertigolf\Bertigolfnewsgeo\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class NewsInternal extends \GeorgRinger\News\Domain\Model\NewsInternal {
+class NewsInternal extends GrNewsInternal{
 
 	/**
 	 * Longitude

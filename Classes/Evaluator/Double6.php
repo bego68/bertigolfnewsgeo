@@ -1,5 +1,5 @@
 <?php
-namespace bertigolf\Bertigolfnewsgeo\Evaluator;
+namespace Bertigolf\Bertigolfnewsgeo\Evaluator;
 /***************************************************************
  *  Copyright notice
  *
