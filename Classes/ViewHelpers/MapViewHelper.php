@@ -72,7 +72,6 @@ use TYPO3FLUID\FLUID\CORE\VIEWHELPER\AbstractConditionViewHelper as AbstractView
 			);
 			
 		}
-		
 		return json_encode( $map );
 		
 	}

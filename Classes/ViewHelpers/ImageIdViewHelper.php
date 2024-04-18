@@ -24,7 +24,7 @@ namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3FLUID\Fluid\Core\ViewHelper\AbstractConditionViewHelper as  AbstractViewHelper;
-use bertigolf\Bertigolfnewsgeo\Domain\Model\News;
+use GeorgRinger\News\Domain\Model\News;
 //use Tx_News_Domain_Model_News;
 /**
  *

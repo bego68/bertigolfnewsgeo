@@ -1,3 +1,15 @@
+page.includeJSFooterlibs {
+    // JavaScript-Dateien asynchron nachladen (ab TYPO3 7.1)
+    file_jq02 = EXT:bertigolfnewsgeo/Resources/Public/Js/jquery-3.7.1.min.js
+    file_jq02{
+        async = 1
+        external = 1
+        disableCompression = 1
+        excludeFromConcatenation = 1
+    }
+}
+
+
 plugin.tx_bertigolfnewsgeo {
 	view {
 		templateRootPath = {$plugin.tx_bertigolfnewsgeo.view.templateRootPath}

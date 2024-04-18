@@ -23,11 +23,14 @@ $tmp_bertigolfnewsgeo_columns = array(
                         'eval' => 'double6'
                 ),
         ),
-        'track' => array(
+        'track' => [
                 'exclude' => 0,
                 'label' => 'LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolfnewsgeo_domain_model_news.track',
-                'config' =>     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig( 'files' ),
-        ),
+                 'config' => [
+					'type' => 'file',
+					'maxitems' => 6
+				],
+        ],
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_news_domain_model_news',$tmp_bertigolfnewsgeo_columns,1);
