@@ -15,6 +15,6 @@ $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes']['Domain/Model/News'][] = '
 	),
 	// non-cacheable actions
 	array(
-		
+		'News' => 'dateMenu,searchResult',
 	)
 );
