@@ -23,7 +23,7 @@ namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-//use TYPO3FLUID\FLUID\CORE\VIEWHELPER\AbstractConditionViewHelper as AbstractViewHelper;
+
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;

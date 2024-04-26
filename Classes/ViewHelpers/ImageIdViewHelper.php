@@ -23,9 +23,11 @@ namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use TYPO3FLUID\Fluid\Core\ViewHelper\AbstractConditionViewHelper as  AbstractViewHelper;
-use GeorgRinger\News\Domain\Model\News;
-//use Tx_News_Domain_Model_News;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
+use GeorgRinger\News\Domain\Model\NewsDefault as News;
+
 /**
  *
  *
@@ -35,6 +37,9 @@ use GeorgRinger\News\Domain\Model\News;
  */
  class ImageIdViewHelper extends AbstractViewHelper {
     
+	 use CompileWithRenderStatic;
+	 
+	 protected $escapeOutput = false;
     
     /**
      * initialisiert Argumente
@@ -53,12 +58,16 @@ use GeorgRinger\News\Domain\Model\News;
 	 * 
 	 * @return integer $imageId;
 	 */
-	public function render() {
+public static function renderStatic(
+		array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext,
+	): string {
 	  	/** @var int */
 		$imageId=0;
 		/** @var News $newsItem */
-                $newsItem = $this->arguments['news'];
-		$settings = $this->arguments['settings'];
+                $newsItem = $arguments['news'];
+		$settings = $arguments['settings'];
 		foreach ( $settings['image'] as $key => $image){
 			/** @var intger */
 			$pids = explode(',', $image['pid'] );;
@@ -68,7 +77,6 @@ use GeorgRinger\News\Domain\Model\News;
 				//todo check categories		
 			}
 		}
-		return $imageId;
-		
+		return $imageId;	
 	}
 }	
