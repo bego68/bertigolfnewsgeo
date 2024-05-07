@@ -1,13 +1,29 @@
-page.includeJSFooterlibs {
+page.includeJSLibs {
     // JavaScript-Dateien asynchron nachladen (ab TYPO3 7.1)
     file_jq02 = EXT:bertigolfnewsgeo/Resources/Public/Js/jquery-3.7.1.min.js
     file_jq02{
-        async = 1
-        external = 1
+        external = 0
         disableCompression = 1
         excludeFromConcatenation = 1
     }
 }
+
+config.recordLinks.tx_news {
+     typolink {
+         # Detail page
+         parameter.cObject = USER
+         parameter.cObject {
+             userFunc = GeorgRinger\News\Service\LinkHandlerTargetPageService->process
+             news.data = field:uid
+             # Page used if no detail page is set in the category
+             fallback = 7
+         }
+		 #parameter = 7
+         additionalParams.data = field:uid
+         additionalParams.wrap = &tx_news_pi1[controller]=News&tx_news_pi1[action]=detail&tx_news_pi1[news]=|
+     }
+ }
+
 
 
 plugin.tx_bertigolfnewsgeo {
