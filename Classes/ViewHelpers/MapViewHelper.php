@@ -3,7 +3,7 @@ namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014-2019 Berti Golf <info@berti-golf.de>, berti-golf.de
+ *  (c) 2014-2024 Berti Golf <info@berti-golf.de>, berti-golf.de
  *  
  *  All rights reserved
  *
@@ -23,7 +23,10 @@ namespace Bertigolf\Bertigolfnewsgeo\ViewHelpers;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use TYPO3FLUID\FLUID\CORE\VIEWHELPER\AbstractConditionViewHelper as AbstractViewHelper;
+
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 /**
  *
  *
@@ -32,7 +35,11 @@ use TYPO3FLUID\FLUID\CORE\VIEWHELPER\AbstractConditionViewHelper as AbstractView
  *
  */
  class MapViewHelper extends AbstractViewHelper {
-	
+	 
+	 use CompileWithRenderStatic;
+	 
+	 protected $escapeOutput = false;
+	 
     /**
      * Initialize arguments.
      *
@@ -40,7 +47,7 @@ use TYPO3FLUID\FLUID\CORE\VIEWHELPER\AbstractConditionViewHelper as AbstractView
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
     */
     public function initializeArguments()
-    {
+		{
         parent::initializeArguments();
 
         $this->registerArgument('uid', 'integer', 'uid', false,0);
@@ -56,23 +63,26 @@ use TYPO3FLUID\FLUID\CORE\VIEWHELPER\AbstractConditionViewHelper as AbstractView
 	 * 
 	 * @return string
 	 */
-	public function render() {
+	public static function renderStatic(
+		array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext,
+	): string  {
 	  	/** @var array $map */
 		$map=array();
 	
-		if($this->arguments['lat'] <> 0 and $this->arguments['lng']<> 0){
+		if($arguments['lat'] <> 0 and $arguments['lng']<> 0){
 			$map = array(
-				'uid' => $this->arguments['uid'],
-				'titel' => $this->arguments['titel'],
-				'untertitel' => $this->arguments['untertitel'],
-				'info' => $this->arguments['info'],
-				'lat' =>$this->arguments['lat'],
-				'lng' => $this->arguments['lng'],
-				'imageId' => $this->arguments['imageId']	
+				'uid' => $arguments['uid'],
+				'titel' => $arguments['titel'],
+				'untertitel' => $arguments['untertitel'],
+				'info' => $arguments['info'],
+				'lat' => $arguments['lat'],
+				'lng' => $arguments['lng'],
+				'imageId' => $arguments['imageId']	
 			);
 			
 		}
-		
 		return json_encode( $map );
 		
 	}

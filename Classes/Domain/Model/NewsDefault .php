@@ -4,7 +4,7 @@ namespace Bertigolf\Bertigolfnewsgeo\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Berti Golf <info@berti-golf.de>, berti-golf.de
+ *  (c) 2014-2024 Berti Golf <info@berti-golf.de>, berti-golf.de
  *
  *  All rights reserved
  *
@@ -24,7 +24,7 @@ namespace Bertigolf\Bertigolfnewsgeo\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use GeorgRinger\News\Domain\Model\NewsDefault;
+use \GeorgRinger\News\Domain\Model\NewsDefault as GrNewsDefault;
 /**
  *
  *
@@ -32,7 +32,7 @@ use GeorgRinger\News\Domain\Model\NewsDefault;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class News extends NewsDefault {
+class NewsDefault extends GrNewsDefault{
 
 	/**
 	 * Longitude

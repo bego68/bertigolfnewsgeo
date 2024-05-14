@@ -1,6 +1,6 @@
 <?php
 
-Namespace Bertigolf\Bertigolfnewsgeo\Controller ;
+Namespace Bertigolf\Bertigolfnewsgeo\Controller;
 /***************************************************************
 *  Copyright notice
 *
@@ -23,14 +23,14 @@ Namespace Bertigolf\Bertigolfnewsgeo\Controller ;
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-
+use GeorgRinger\News\Controller\NewsController as GrNewsController;
 /**
  * Controller of news records
  *
  * @package TYPO3
  * @subpackage Bertigolfnewsgeo
  */
-class  NewsController extends \GeorgRinger\News\Controller\NewsController {
+class  NewsController extends GrNewsController {
 
 
 }

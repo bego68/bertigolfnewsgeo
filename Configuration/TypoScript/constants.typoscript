@@ -1,11 +1,11 @@
 plugin.tx_bertigolfnewsgeo {
 	view {
 		# cat=plugin.tx_bertigolfnewsgeo/file; type=string; label=Path to template root (FE)
-		templateRootPath = EXT:bertigolfnewsgeo/Resources/Private/Templates/
+		templateRootPaths = EXT:bertigolfnewsgeo/Resources/Private/Templates/
 		# cat=plugin.tx_bertigolfnewsgeo/file; type=string; label=Path to template partials (FE)
-		partialRootPath = EXT:bertigolfnewsgeo/Resources/Private/Partials/
+		partialRootPaths = EXT:bertigolfnewsgeo/Resources/Private/Partials/
 		# cat=plugin.tx_bertigolfnewsgeo/file; type=string; label=Path to template layouts (FE)
-		layoutRootPath = EXT:bertigolfnewsgeo/Resources/Private/Layouts/
+		layoutRootPaths = EXT:bertigolfnewsgeo/Resources/Private/Layouts/
 	}
 	persistence {
 		# cat=plugin.tx_bertigolfnewsgeo//a; type=string; label=Default storage PID
