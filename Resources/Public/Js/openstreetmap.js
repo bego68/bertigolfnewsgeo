@@ -43,6 +43,7 @@ function initializeMap() {
         });
         marker.desc = dataOrt.info;
         cluster.addLayer(marker);
+        oms.addMarker(marker);
     }
 
     map.addLayer(cluster);
