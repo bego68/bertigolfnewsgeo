@@ -1,44 +1,49 @@
 {namespace geo=bertigolf\Bertigolfnewsgeo\ViewHelpers}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" 	  crossorigin=""/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<script
-src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyDHWon8793ddG4P-d0g9hyhkHefRteprds"></script>
-<script type="text/javascript" src="/typo3conf/ext/bertigolfnewsgeo/Resources/Public/Js/googlemaps.js"></script>
-<script> 
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"  crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier-Leaflet/0.2.6/oms.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-var image = new Array(4);
-<f:for each="{settings.tx_bertigolfnewsgeo.image}" key="imageId" as="image" >
-	image[{imageId}] = new google.maps.MarkerImage('<f:uri.resource  path="{image.url}" extensionName="bertigolfnewsgeo" />',new google.maps.Size(55, 55), new google.maps.Point(0,0),new google.maps.Point(13, 34));
-</f:for>
+<script type="text/javascript" src="/typo3conf/ext/bertigolfnewsgeo/Resources/Public/Js/openstreetmap.js"></script>
 
-
-	var daten = { "orte":[ 
-	<f:format.html parseFuncTSPath="">
-	<f:for each="{news}" as="newsItem">
- 		<f:if condition="{newsItem.lat}">
-			<geo:Map uid="{newsItem.uid}" titel="{newsItem.title}" untertitel="{newsItem.teaser}" info='<f:render partial="List/Maps/MapInfo" arguments="{newsItem: newsItem}" />' lat="{newsItem.lat}" lng="{newsItem.lon}" imageId='<geo:ImageId news="{newsItem}" settings="{settings.tx_bertigolfnewsgeo}" />' /> ,
-		</f:if>
+<script>
+	var icons = {};
+	<f:for each="{settings.tx_bertigolfnewsgeo.image}" key="imageId" as="image" >
+	icons[{imageId}] = L.icon({
+		iconUrl: '<f:uri.resource path="{image.url}" extensionName="bertigolfnewsgeo" />',
+		iconSize: [55, 55],
+		iconAnchor: [13, 34]
+	});
 	</f:for>
-	</f:format.html>
+
+	var daten = { "orte":[
+		<f:format.raw>
+			<f:for each="{news}" as="newsItem">
+				<f:if condition="{newsItem.lat}">
+					<geo:Map uid="{newsItem.uid}" titel="{newsItem.title}" untertitel="{newsItem.teaser}" info='<f:render partial="List/Maps/MapInfo" arguments="{newsItem: newsItem}" />' lat="{newsItem.lat}" lng="{newsItem.lon}" imageId='<geo:ImageId news="{newsItem}" settings="{settings.tx_bertigolfnewsgeo}" />' /> ,
+				</f:if>
+			</f:for>
+		</f:format.raw>
 	]};
-	
-	var startPosition = new google.maps.LatLng({settings.tx_bertigolfnewsgeo.startPosition.lat}, {settings.tx_bertigolfnewsgeo.startPosition.lng});
-	var myOptions = <![CDATA[ { ]]>
-			center: startPosition,
-			zoom: {settings.tx_bertigolfnewsgeo.zoom},
-			mapTypeId: {settings.tx_bertigolfnewsgeo.mapTypeId},
-			panControl: {settings.tx_bertigolfnewsgeo.panControl},
-			zoomControl: {settings.tx_bertigolfnewsgeo.zoomControl},
-			zoomControlOptions: {settings.tx_bertigolfnewsgeo.zoomControlOptions},
-			mapTypeControl: {settings.tx_bertigolfnewsgeo.mapTypeControl},
-			scaleControl: {settings.tx_bertigolfnewsgeo.scaleControl},
-			streetViewControl: {settings.tx_bertigolfnewsgeo.streetViewControl},
-			overviewMapControl: {settings.tx_bertigolfnewsgeo.overviewMapControl},
-			rotateControl: {settings.tx_bertigolfnewsgeo.rotateControl},
-			streetViewControl: {settings.tx_bertigolfnewsgeo.streetViewControl},
-			scrollwheel: {settings.tx_bertigolfnewsgeo.scrollwheel},
-			rotateControl: {settings.tx_bertigolfnewsgeo.rotateControl}
-		};
-	
-	
+
+	var startPosition = [{settings.tx_bertigolfnewsgeo.startPosition.lat}, {settings.tx_bertigolfnewsgeo.startPosition.lng}];
+	var myOptions =  <f:format.raw>{</f:format.raw>
+    center: startPosition,
+	zoom: {settings.tx_bertigolfnewsgeo.zoom},
+	mapTypeId: '{settings.tx_bertigolfnewsgeo.mapTypeId}',
+	panControl: {settings.tx_bertigolfnewsgeo.panControl},
+	zoomControl: {settings.tx_bertigolfnewsgeo.zoomControl},
+	zoomControlOptions: '{settings.tx_bertigolfnewsgeo.zoomControlOptions}',
+	mapTypeControl: {settings.tx_bertigolfnewsgeo.mapTypeControl},
+	scaleControl: {settings.tx_bertigolfnewsgeo.scaleControl},
+	streetViewControl: {settings.tx_bertigolfnewsgeo.streetViewControl},
+	overviewMapControl: {settings.tx_bertigolfnewsgeo.overviewMapControl},
+	rotateControl: {settings.tx_bertigolfnewsgeo.rotateControl},
+	scrollwheel: {settings.tx_bertigolfnewsgeo.scrollwheel}
+	};
+
 	window.onload=function(){initializeMap()};
-</script>  
+</script>
