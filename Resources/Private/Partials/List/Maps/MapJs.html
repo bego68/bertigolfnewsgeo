@@ -1,15 +1,11 @@
 {namespace geo=bertigolf\Bertigolfnewsgeo\ViewHelpers}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-	  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-	  crossorigin=""/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" integrity="sha512-mQ77VPAaabbnTYb1JutT4VQ3PyOzxfmD8se/Y3kMTCe4M3nl2svqX+G/jTCbVThM/sH6SVxM8JJe9iQ4uGMWkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" integrity="sha512-6ZCLMiYwTeli2rVh3XAPi7dFefG/4A3csw96LlotRZkC1iAIP9dStBkyTt3uN9eXJbNPG9nQ21x21Q9AQRh+5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" 	  crossorigin=""/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-		integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-		crossorigin=""></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js" integrity="sha512-OFs3W4DIZ5ZkrDhBFtsCP6JxF0cAHiM1MgsYjNsaCLr4G35/dpRSo2MIrDdqSHjV/2M/1p74sO/FCl2eKxCgwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier-Leaflet/0.2.6/oms.min.js" integrity="sha512-jw_S4QO8aN8eAiwJ2Yl42xY+A3qj24rhN32W5PjP6Yc+gHw3A2e5wH4ASgCke51sP0lB1vD4Lw2RdmA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier-Leaflet/0.2.6/oms.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script type="text/javascript" src="/typo3conf/ext/bertigolfnewsgeo/Resources/Public/Js/openstreetmap.js"></script>
 
@@ -24,13 +20,13 @@
 	</f:for>
 
 	var daten = { "orte":[
-		<f:format.html parseFuncTSPath="">
+		<f:format.raw>
 			<f:for each="{news}" as="newsItem">
 				<f:if condition="{newsItem.lat}">
 					<geo:Map uid="{newsItem.uid}" titel="{newsItem.title}" untertitel="{newsItem.teaser}" info='<f:render partial="List/Maps/MapInfo" arguments="{newsItem: newsItem}" />' lat="{newsItem.lat}" lng="{newsItem.lon}" imageId='<geo:ImageId news="{newsItem}" settings="{settings.tx_bertigolfnewsgeo}" />' /> ,
 				</f:if>
 			</f:for>
-		</f:format.html>
+		</f:format.raw>
 	]};
 
 	var startPosition = [{settings.tx_bertigolfnewsgeo.startPosition.lat}, {settings.tx_bertigolfnewsgeo.startPosition.lng}];
