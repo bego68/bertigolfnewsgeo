@@ -1,46 +1,58 @@
 <?php
-if (!defined('TYPO3')) {
-	die ('Access denied.');
-}
+defined('TYPO3') or die();
 
-$tmp_bertigolfnewsgeo_columns = array(
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-        'lon' => array(
-                'exclude' => 0,
-                'label' => 'LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolfnewsgeo_domain_model_news.lon',
-                'config' => array(
-                        'type' => 'input',
-                        'size' => 30,
-                        'eval' => 'double6'
-                ),
-        ),
-        'lat' => array(
-                'exclude' => 0,
-                'label' => 'LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolfnewsgeo_domain_model_news.lat',
-                'config' => array(
-                        'type' => 'input',
-                        'size' => 30,
-                        'eval' => 'double6'
-                ),
-        ),
-        'track' => [
-                'exclude' => 0,
-                'label' => 'LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolfnewsgeo_domain_model_news.track',
-                 'config' => [
-					'type' => 'file',
-					'maxitems' => 6
-				],
+$tempColumns = [
+    'lon' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolfnewsgeo_domain_model_news.lon',
+        'config' => [
+            'type' => 'input',
+            'size' => 30,
+            'eval' => 'double6',
+            'default' => 0.0,
         ],
+    ],
+    'lat' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolfnewsgeo_domain_model_news.lat',
+        'config' => [
+            'type' => 'input',
+            'size' => 30,
+            'eval' => 'double6',
+            'default' => 0.0,
+        ],
+    ],
+    'track' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolfnewsgeo_domain_model_news.track',
+        'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
+            'track',
+            [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference',
+                ],
+                'foreign_types' => [
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_UNKNOWN => ['showitem' => '--palette--;;filePalette'],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => ['showitem' => '--palette--;;filePalette'],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => ['showitem' => '--palette--;;imageoverlayPalette, --palette--;;filePalette'],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => ['showitem' => '--palette--;;audioOverlayPalette, --palette--;;filePalette'],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => ['showitem' => '--palette--;;videoOverlayPalette, --palette--;;filePalette'],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => ['showitem' => '--palette--;;filePalette'],
+                ],
+                'maxitems' => 6,
+            ],
+            'gpx,kml'
+        ),
+    ],
+];
+
+ExtensionManagementUtility::addTCAcolumns('tx_news_domain_model_news', $tempColumns);
+
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tx_news_domain_model_news',
+    '--div--;LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolf.tab,lon,lat,track',
+    '',
+    'after:alternative_title'
 );
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_news_domain_model_news',$tmp_bertigolfnewsgeo_columns,1);
-
-$GLOBALS['TCA']['tx_news_domain_model_news']['columns'][$GLOBALS['TCA']['tx_news_domain_model_news']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:bertigolfnewsgeo/Resources/Private/Language');
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tx_news_domain_model_news","lon;;;;1-1-1");
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tx_news_domain_model_news","lat;;;;1-1-1");
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes("tx_news_domain_model_news","track;;;;1-1-1");
-
-$GLOBALS['TCA']['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] = $GLOBALS['TCA']['tx_news_domain_model_news']['types']['1']['showitem'];
-$GLOBALS['TCA']['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] .= ',--div--;LLL:EXT:bertigolfnewsgeo/Resources/Private/Language/locallang_db.xlf:tx_bertigolf';
-$GLOBALS['TCA']['tx_news_domain_model_news']['types']['Tx_Bertigolfnewsgeo_News']['showitem'] .= 'lon, lat, track';

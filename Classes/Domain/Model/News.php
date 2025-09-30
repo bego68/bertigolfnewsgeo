@@ -25,92 +25,81 @@ namespace Bertigolf\Bertigolfnewsgeo\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use GeorgRinger\News\Domain\Model\NewsDefault;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
- *
- *
- * @package bertigolfnewsgeo
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
+ * News
  */
-class News extends NewsDefault {
+class News extends NewsDefault
+{
+    /**
+     * Longitude
+     *
+     * @var float
+     */
+    protected float $lon = 0.0;
 
-	/**
-	 * Longitude
-	 *
-	 * @var \float
-	 */
-	protected $lon;
+    /**
+     * Latitude
+     *
+     * @var float
+     */
+    protected float $lat = 0.0;
 
-	/**
-	 * Latitude
-	 *
-	 * @var \float
-	 */
-	protected $lat;
+    /**
+     * Track der Route
+     *
+     * @var ObjectStorage<FileReference>
+     */
+    protected ?ObjectStorage $track = null;
 
-	/**
-	 * Track der Route
-	 *
-	 * @var \string
-	 */
-	protected $track;
+    /**
+     * @return float
+     */
+    public function getLon(): float
+    {
+        return $this->lon;
+    }
 
-	/**
-	 * Returns the lon
-	 *
-	 * @return \float $lon
-	 */
-	public function getLon() {
-		return $this->lon;
-	}
+    /**
+     * @param float $lon
+     */
+    public function setLon(float $lon): void
+    {
+        $this->lon = $lon;
+    }
 
-	/**
-	 * Sets the lon
-	 *
-	 * @param \float $lon
-	 * @return void
-	 */
-	public function setLon($lon) {
-		$this->lon = $lon;
-	}
+    /**
+     * @return float
+     */
+    public function getLat(): float
+    {
+        return $this->lat;
+    }
 
-	/**
-	 * Returns the lat
-	 *
-	 * @return \float $lat
-	 */
-	public function getLat() {
-		return $this->lat;
-	}
+    /**
+     * @param float $lat
+     */
+    public function setLat(float $lat): void
+    {
+        $this->lat = $lat;
+    }
 
-	/**
-	 * Sets the lat
-	 *
-	 * @param \float $lat
-	 * @return void
-	 */
-	public function setLat($lat) {
-		$this->lat = $lat;
-	}
+    /**
+     * @return ObjectStorage|null
+     */
+    public function getTrack(): ?ObjectStorage
+    {
+        return $this->track;
+    }
 
-	/**
-	 * Returns the track
-	 *
-	 * @return \string $track
-	 */
-	public function getTrack() {
-		return $this->track;
-	}
-
-	/**
-	 * Sets the track
-	 *
-	 * @param \string $track
-	 * @return void
-	 */
-	public function setTrack($track) {
-		$this->track = $track;
-	}
-
+    /**
+     * @param ObjectStorage|null $track
+     */
+    public function setTrack(?ObjectStorage $track): void
+    {
+        $this->track = $track;
+    }
 }
 ?>

@@ -1,150 +1,87 @@
-page.includeJSLibs {
-    // JavaScript-Dateien asynchron nachladen (ab TYPO3 7.1)
-    file_jq02 = EXT:bertigolfnewsgeo/Resources/Public/Js/jquery-3.7.1.min.js
-    file_jq02{
-        external = 0
-        disableCompression = 1
-        excludeFromConcatenation = 1
+plugin.tx_news{
+	settings {
+		tx_bertigolfnewsgeo{
+			image {
+				0 {
+					url=Icons/pin_huette.png
+					pid=1622
+					categories=
+				}
+				1 {
+					url=Icons/pin_klettern.png
+					pid=1620
+					categories=
+				}
+				2 {
+					url=Icons/pin_skitour.png
+					pid=1623,1618
+					categories=
+				}
+				3 {
+					url=Icons/pin_wandern.png
+					pid=1621
+					categories=
+				}
+
+
+			}
+			zoom=7
+			startPosition{
+				lat=48.17587
+				lng=11.5235755
+			}
+			mapTypeId=google.maps.MapTypeId.TERRAIN
+			panControl=true
+			zoomControl=true
+			zoomControlOptions={ style: google.maps.ZoomControlStyle.BIG }
+			mapTypeControl=true
+			scaleControl=true
+			streetViewControl=true
+			overviewMapControl=true
+			rotateControl=true
+			streetViewControl=true
+			scrollwheel=false
+			rotateControl=false
+		}
+	}
+}
+plugin.tx_news {
+  view {
+    partialRootPaths >
+    partialRootPaths {
+      # Pfad mit allen unveränderten Templates der Erweiterung:
+      100 = EXT:news/Resources/Private/Partials/
+      # Pfad nur mit angepassten Templates:
+      200 = EXT:bertigolfnewsgeo/Resources/Private/Partials/
+      300 = fileadmin/template/ext/news/Partials/
+    }
+    templateRootPaths >
+    templateRootPaths {
+      100 = EXT:news/Resources/Private/Templates/
+      200 = EXT:bertigolfnewsgeo/Resources/Private/Templates/
+      300 = fileadmin/template/ext/news/Templates/
+    }
+    layoutRootPaths>
+    layoutRootPaths{
+      100 = EXT:news/Resources/Private/Layouts/
+      200 = EXT:bertigolfnewsgeo/Resources/Private/Layouts/
+      300 = fileadmin/template/ext/news/Layouts/
+    }
+  }
+}
+
+# Extbase persistence
+config.tx_extbase.persistence.classes {
+    Bertigolf\Bertigolfnewsgeo\Domain\Model\News {
+        subclasses {
+            Tx_Bertigolfnewsgeo_News = Bertigolf\Bertigolfnewsgeo\Domain\Model\News
+        }
     }
 }
-
-config.recordLinks.tx_news {
-     typolink {
-         # Detail page
-         parameter.cObject = USER
-         parameter.cObject {
-             userFunc = GeorgRinger\News\Service\LinkHandlerTargetPageService->process
-             news.data = field:uid
-             # Page used if no detail page is set in the category
-             fallback = 7
-         }
-		 #parameter = 7
-         additionalParams.data = field:uid
-         additionalParams.wrap = &tx_news_pi1[controller]=News&tx_news_pi1[action]=detail&tx_news_pi1[news]=|
-     }
- }
-
-
-
-plugin.tx_bertigolfnewsgeo {
-	view {
-		templateRootPath = {$plugin.tx_bertigolfnewsgeo.view.templateRootPath}
-		partialRootPath = {$plugin.tx_bertigolfnewsgeo.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_bertigolfnewsgeo.view.layoutRootPath}
-	}
-	persistence {
-		storagePid = {$plugin.tx_bertigolfnewsgeo.persistence.storagePid}
-	}
-	features {
-		# uncomment the following line to enable the new Property Mapper.
-		rewrittenPropertyMapper = 1
-	}
-}
-
-plugin.tx_news {
-	 persistence {
-			 classes {
-					GeorgRinger\News\Domain\Model\News {
-						subclasses {
-								# hier wichtig: index 0 überschreiben für die 
-								# normale News-Ansicht
-								# 0 == Typ-Auswahl an News-Datensatz
-								0 = Bertigolf\Bertigolfnewsgeo\Domain\Model\News
-								2 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
-								1 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
-						}
-					}
-					Bertigolf\Bertigolfnewsgeo\Domain\Model\News{
-						mapping {
-								recordType = 0
-								tableName = tx_news_domain_model_news
-						}
-						
-					}
-					Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal{
-						mapping {
-								recordType = 2
-								tableName = tx_news_domain_model_news
-						}
-						
-					}
-					Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal{
-						mapping {
-								recordType = 1
-								tableName = tx_news_domain_model_news
-						}
-						
-					}
-					
-			 }
-	 }
-}
-plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsExternal.mapping.recordType = 6
-plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsDefault.mapping.recordType = 4
-plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\NewsInternal.mapping.recordType = 5
-plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.0 = Bertigolf\Bertigolfnewsgeo\Domain\Model\News
-plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.2 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
-plugin.tx_news.persistence.classes.GeorgRinger\News\Domain\Model\News.subclasses.1 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
-
-
-plugin.tx_bertigolfnewsgeo._CSS_DEFAULT_STYLE (
-
-	#map_canvas{
-	width: 100%;
-	height: 400px;
-	}
-	#content .gm-style-iw p{
-	 padding : 0; 
-	 text-align: left; 
-	}
-	
-	#content .gm-style-iw p.mapDatum{
-	 font-size: 0.8em; 
-	}
-	
-	#content .gm-style-iw p.mapLink a{
-	 font-size: 1.2em; 
-	}
-	
-	#content .gm-style-iw{
-	min-width: 300px;
-	min-height: 100px;
-	}
-
-)
-
-
-config.tx_extbase.persistence.classes {
-	GeorgRinger\News\Domain\Model\News {
-		subclasses {
-				# hier wichtig: index 0 überschreiben für die 
-				# normale News-Ansicht
-				# 0 == Typ-Auswahl an News-Datensatz
-				0 = Bertigolf\Bertigolfnewsgeo\Domain\Model\News
-				2 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal
-				1 = Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal
-		}
-	}
-	Bertigolf\Bertigolfnewsgeo\Domain\Model\News{
-		mapping {
-				recordType = 0
-				tableName = tx_news_domain_model_news
-		}
-		
-	}
-	Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsInternal{
-		mapping {
-				recordType = 2
-				tableName = tx_news_domain_model_news
-		}
-		
-	}
-	Bertigolf\Bertigolfnewsgeo\Domain\Model\NewsExternal{
-		mapping {
-			recordType = 1
-			tableName = tx_news_domain_model_news
-		}
-
-	}
-
+plugin.tx_news.persistence.classes {
+    Bertigolf\Bertigolfnewsgeo\Domain\Model\News {
+        subclasses {
+            Tx_Bertigolfnewsgeo_News = Bertigolf\Bertigolfnewsgeo\Domain\Model\News
+        }
+    }
 }
